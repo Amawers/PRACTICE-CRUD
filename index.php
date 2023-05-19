@@ -3,7 +3,7 @@
     </head>
 <body>
 <center>
-    <form action="CREATE.php" method="post">
+    <form action="insertrec.php" method="post">
         <input type="text" name="sid" id="sid"><br>
         <input type="text" name="sname" id="sname"><br>
         <input type="text" name="gender" id="gender"><br>
@@ -23,7 +23,7 @@ $result = $conn->query($sql);
 if($result->num_rows > 0){
     echo "<table id='myTable' border=1><tr><td>Student ID</td><td>Name</td><td>Gender</td><td colspan=2>Action</td></tr>";
     while($row=$result->fetch_assoc()){
-        echo "<tr><td>" . $row["sid"] . "</td><td>" . $row["sname"] . "</td><td>" . $row["gender"] . "</td><td><a href='DELETE.php? sid=" . $row["sid"] . "'>delete</a></td><td> <a href='UPDATEHTML.php? sid=" . $row["sid"] . "&sname=" . $row["sname"] . "&gender=" . $row["gender"] . "'>edit</a></td></tr>";
+        echo "<tr><td>" . $row["sid"] . "</td><td>" . $row["sname"] . "</td><td>" . $row["gender"] . "</td><td><a href='deleterec.php? sid=" . $row["sid"] . "'>delete</a></td><td> <a href='editrec.php? sid=" . $row["sid"] . "&sname=" . $row["sname"] . "&gender=" . $row["gender"] . "'>edit</a></td></tr>";
     }   
 }else{
     echo "FAILED QUERY";
