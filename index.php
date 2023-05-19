@@ -1,9 +1,14 @@
+<html>
+    <head>
+    </head>
+<body>
 <center>
     <form action="CREATE.php" method="post">
         <input type="text" name="sid" id="sid"><br>
         <input type="text" name="sname" id="sname"><br>
         <input type="text" name="gender" id="gender"><br>
         <input type="submit" value="add record">
+        <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for first names..">    
 </form>
 
 <?php
@@ -23,7 +28,29 @@ if($result->num_rows > 0){
 }else{
     echo "FAILED QUERY";
 }
-
 echo "</table>";
-echo "</center";
 ?>
+</center>
+
+<script>
+function myFunction(){
+    var input, filter, table, tr, td, i, txtValue; 
+    input = document.getElementById("myInput"); 
+    filter = input.value.toUpperCase(); 
+    table = document.getElementById("myTable"); 
+    tr = table.getElementsByTagName("tr"); 
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; 
+        if (td){
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){ 
+                tr[i].style.display = ""; 
+            } else{
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>
